@@ -1,13 +1,16 @@
 # Github Repository for the COP27 Datathon 
-### Details coming soon...
+## Details coming soon...
 
-### Timeline
 
 ### Logistics
-
-### Submission process
+#### Timeline
+#### Submission process
+#### Communications
+##### Discord
 
 ### Resources
+#### Compiled Datasets 
+#### Tutorials and background
 
 ### FAQs
 
