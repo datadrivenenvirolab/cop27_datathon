@@ -3,7 +3,9 @@
 
 ### Timeline
 
-### Submission proces
+### Logistics
+
+### Submission process
 
 ### Resources
 
