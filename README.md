@@ -82,6 +82,7 @@ Participants are encouraged to transform their data into the format of the data 
 [Python graph gallery](https://www.python-graph-gallery.com/)
 
 **GitHub** 
+ 
 [GitHub basics](https://docs.github.com/en/get-started/quickstart/hello-world)
 
 [Quick start to GitHub pages](https://docs.github.com/en/pages/quickstart)  
