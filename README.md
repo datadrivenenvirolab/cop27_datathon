@@ -1,6 +1,6 @@
 # Github Repository for the COP27 Datathon 
 
-##[DRAFT] Details to be confirmed
+## [DRAFT] Details to be confirmed
 
 ### Introduction
 
