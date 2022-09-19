@@ -37,7 +37,7 @@ If you have significant amounts of code (for e.g., if you have built a web tool/
 Join the datathon Discord channel [here](https://discord.com/invite/a9ZEFFKz)!
 
 ##### Team-matching
-##### Details forthcoming...
+If you are participating in the datathon individually, check out the Discord [Team Matching channel](https://discord.com/channels/1018884491000950804/1020361121435234375) to find your dream team!
 
 ### Resources
 
@@ -50,7 +50,7 @@ Crowd-sourced datasets via our [google form[(https://docs.google.com/forms/d/e/1
 
 The DDL-OEF-CAD 2.0 Data model is an attempt led by DDL and OEF (and supported by the CAD 2.0 community) to create a data model that would allow climate data from disparate sources to be harmonized for use in a Digitally-enabled Independent Global Stocktake. 
 
-Participants are encouraged to transform their data into the format of the data model (accessible [here](https://github.com/datadrivenenvirolab/cop27_datathon/blob/main/Resources/Data%20model/Data%20model.md)) when submitting any datasets, and to leave any comments they have on the data model on this version [here](https://miro.com/app/board/o9J_l495VDw=/?moveToWidget=3458764532801591939&cot=10). 
+Participants are encouraged to transform their data into the format of the data model (accessible [here](https://github.com/Open-Earth-Foundation/OpenClimate-Schema) when submitting any datasets, and to leave any comments they have on the data model on this version [here](https://miro.com/app/board/o9J_l495VDw=/?moveToWidget=3458764532801591939&cot=10). 
 
 #### Tutorials and background info
 **R**
