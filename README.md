@@ -28,7 +28,7 @@ We ask the hackers to embark on an unusual task — help us collectively build t
 
 All submissions should be made via the GitHub repository. To submit your project, please 
 1. Fork a copy of the datathon repository
-2. Create a subfolder under the Submissions/<Relevant Prompt Category> folder with the format “TeamName_PromptBucket”
+2. Create a subfolder under the Submissions/<Relevant Prompt Category> folder with the format “TeamName_PromptTitle”
 3. Include/Embed any documentation and/or presentations in the README file 
 4.Include any relevant code snippets and/or datasets 
 5. Submit a pull request to the repository 
