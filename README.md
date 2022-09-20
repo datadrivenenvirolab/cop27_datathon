@@ -1,6 +1,6 @@
 # Github Repository for the COP27 Datathon 
 
-## [DRAFT] Details to be confirmed
+## Details to be confirmed
 
 ### Introduction
 
@@ -22,7 +22,13 @@ We ask the hackers to embark on an unusual task — help us collectively build t
 5. November 10th @ COP27 | Winners will present on Science Day
 
 #### Judging Criteria
-##### Details forthcoming...
+Submissions will be evaluated based on their quality, clarity, credibility, and potential impact across these dimensions:
+
+- Help data sets talk to one another for aggregated insights to enable insights on collective progress
+- Develop new insights and analyses about our collective progress toward the Paris Agreement
+- Help to visualize our collective progress toward the Paris Agreements
+- Data storytelling and narration
+- Other data innovation
 
 #### Submission process
 
