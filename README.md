@@ -1,7 +1,5 @@
 # Github Repository for the COP27 Datathon 
 
-## Details to be confirmed
-
 ### Introduction
 
 The GST Climate Datathon is a call for open data and tools to support the GST ahead of COP27. Outcomes should be aimed toward making data sets interoperable, providing aggregated insights, support tools, and visualizations. Three winners from each category will have the opportunity to present their findings at the COP27 Presidency’s ‘Science and Information Day’.
