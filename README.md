@@ -14,7 +14,12 @@ We ask the hackers to embark on an unusual task — help us collectively build t
 ### Logistics
 
 #### Timeline
-##### Details forthcoming...
+
+1. September 21st @ 9:00-9:30 AM ET | Launch Datathon @ NY Climate Week
+2. October 15th | Submissions closed
+3. October 15th-20th | Submissions reviewed
+4. October 21st | Winners identified and announced
+5. November 10th @ COP27 | Winners will present on Science Day
 
 #### Judging Criteria
 ##### Details forthcoming...
@@ -50,7 +55,7 @@ Crowd-sourced datasets via our [google form](https://docs.google.com/forms/d/e/1
 
 The DDL-OEF-CAD 2.0 Data model is an attempt led by DDL and OEF (and supported by the CAD 2.0 community) to create a data model that would allow climate data from disparate sources to be harmonized for use in a Digitally-enabled Independent Global Stocktake. 
 
-Participants are encouraged to transform their data into the format of the data model (accessible [here](https://github.com/Open-Earth-Foundation/OpenClimate-Schema) when submitting any datasets, and to leave any comments they have on the data model on this version [here](https://miro.com/app/board/o9J_l495VDw=/?moveToWidget=3458764532801591939&cot=10). 
+Participants are encouraged to transform their data into the format of the data model (accessible [here](https://github.com/Open-Earth-Foundation/OpenClimate-Schema) when submitting any datasets, and to leave any comments they have on the data model as an issue within the same GitHub Repository linked above. 
 
 #### Tutorials and background info
 **R**
@@ -89,5 +94,4 @@ Participants are encouraged to transform their data into the format of the data 
 
 [Working with submodules](https://github.blog/2016-02-01-working-with-submodules/)
 
-
-### FAQs
+ 
