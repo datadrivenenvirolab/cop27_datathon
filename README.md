@@ -44,7 +44,7 @@ If you are participating in the datathon individually, check out the Discord [Te
 #### Compiled Datasets
 
 ** Crowd-sourced and compiled datasets**
-Crowd-sourced datasets via our [google form[(https://docs.google.com/forms/d/e/1FAIpQLSfP0migRTasiXnfIiuCd8SZRU0hIthBRExwyfFOTu4JYpixNA/viewform?pli=1) are available on this [Google Drive folder](https://drive.google.com/drive/folders/1Ore_Wg8VyqRqQppG_I6z2Q3BKXnrfEut?usp=sharing)
+Crowd-sourced datasets via our [google form](https://docs.google.com/forms/d/e/1FAIpQLSfP0migRTasiXnfIiuCd8SZRU0hIthBRExwyfFOTu4JYpixNA/viewform?pli=1) are available on this [Google Drive folder](https://drive.google.com/drive/folders/1Ore_Wg8VyqRqQppG_I6z2Q3BKXnrfEut?usp=sharing)
 
 **DDL-OEF-CAD 2.0 Data model**
 
