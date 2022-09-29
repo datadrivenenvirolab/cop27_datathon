@@ -33,7 +33,7 @@ Submissions will be evaluated based on their quality, clarity, credibility, and 
 All submissions should be made via the GitHub repository. To submit your project, please 
 1. Fork a copy of the datathon repository
 2. Navigate to the folder of the prompt you wish to provide a submission for
-3. Create a subfolder under the Submissions/<<Prompt Theme>>/<<Prompt>> folder with the format “TeamName_PromptTitle”
+3. Create a subfolder under the Submissions/&lt;Prompt Theme&rt;/&lt;Prompt folder&rt; with the format “TeamName_PromptTitle”
 4. Include/Embed any documentation and/or presentations in the README file 
 5.Include any relevant code snippets and/or datasets 
 6. Submit a pull request to the repository 
