@@ -34,8 +34,8 @@ The platform is open to anyone with an interest in current climate data, or in t
 - Have Node installed
 - Fork this repo
 - Clone it to your local machine
-- Create a .env file with the following variables:
-    - `DB_STRING =` set the value to a MongoDB Connection String with the user and password fields replaced. Make your own or contact me.
+- Edit the .env file with the following variables:
+    - `DB_STRING =` set the value to your own MongoDB Connection String with the user and password fields replaced, or contact me for edit access to the database used in this web app.
     - `PORT = 3000` (value doesn't matter)
 - On the terminal in the folder with the project, run `npm install`
 - After install, type either `npm run start` or `node server` to start the app
