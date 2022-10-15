@@ -74,11 +74,12 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#03164d",endCo
   background:  linear-gradient(135deg, rgba(3,22,77,1), rgb(0, 134, 158));
   color: white;
   font-family: 'Roboto', sans-serif;
-  font-size: 1rem;
+  font-size: .9rem;
   font-weight: 600;
   text-decoration: none;
 }
 .abtn{
+  font-size: .9rem;
   border: 2px outset black;
   border-top-color: rgb(128 128 128);
   border-left-color: rgb(128 128 128);
@@ -150,6 +151,7 @@ header{
       }
         header ul a{
           padding: 0 1em;
+          text-align: center;
         }
 /*  MAIN STYLING - INDEX  */
 main{
@@ -204,18 +206,36 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#03164d",endCo
     color: white;
     text-align: center;
   }
+    li.card a{
+      color: white;
+      text-decoration: none;
+    }
+    li.card a:hover{
+      color: none;
+      border: none;
+    }
     li.card p{
       font-size: .8rem;
       margin: .5em 0 0 0;
     } 
-  section.nav, .tableNav{
+  section.nav{
     width: 22em;
-    margin: 4em 0;
+    margin: 1em 0;
     font-family: 'Concert One', 'Roboto', sans-serif;
     letter-spacing: .1rem;
     flex-direction: row;
     justify-content: space-around;
   }
+    .dataCard a:hover{
+      background-color: rgb(0, 45, 85);
+      text-align: center;
+      padding: 0;
+    }
+    .dataCard .spBt i:hover{
+      color: rgb(0, 198, 122);
+      margin: 0;
+      padding: .4em;
+    }
 /*  MAIN STYLING - ADD-DATA  */
 section.criteria{
   width: 100%;
@@ -369,6 +389,25 @@ section.form form{
     width: 18em;
   }
 /*  MAIN STYLING - DATA  */
+.dataTable{
+  margin: 3em 0;
+}
+.dataTable h2{
+  margin: 0;
+}
+.tableNav{
+  width: 100%;
+  margin: .2em 0;
+  display: flex;
+  justify-content: space-between;
+}
+.cont{
+  display: flex;
+  align-items: center;
+}
+.dropdown{
+  width: fit-content;
+}
 .filterMenu{
   padding: 1em;
   width: fit-content;
@@ -409,11 +448,12 @@ h5{
 }
 .dataRow {
   width: 100%;
+  margin: .3em 0;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.dataRow span {
+.dataRow.pills span {
   margin-right: .2em;
   padding: .2em .5em;
   border-radius: .5em;
@@ -431,7 +471,9 @@ span.visType {
 .dataRow.expand span{
   color: black;
 }
-
+.fa-circle{ /*  status  */
+  color: rgb(0, 76, 142);
+}
 /*  FOOTER  */
 footer {
   padding: 2em 0;
@@ -456,3 +498,16 @@ footer {
       font-size: 1rem;
       font-family: 'Concert One', 'Roboto', sans-serif;
     }
+@media screen and (max-width: 600px) {
+  header nav{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  a.logo:hover{
+    margin: 0;
+    padding: 0;
+  }
+  nav ul a:hover{
+  }
+}
