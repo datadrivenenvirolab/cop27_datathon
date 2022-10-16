@@ -18,6 +18,14 @@ The platform is open to anyone with an interest in current climate data, or in t
 
 ---
 
+# View of the App
+![Climate Data Explorer cover image](https://github.com/wo1vin/cop27_datathon/blob/dc6225fa18dd577a296167d7201ba8ca8d99ade6/Submissions/Mitigation/MappingClimateDataSpace/DataExplorer_MappingClimateDataSpace/public/assets/WebApp-Sample1.png?raw=true)
+![Climate Data Explorer cover image](https://github.com/wo1vin/cop27_datathon/blob/dc6225fa18dd577a296167d7201ba8ca8d99ade6/Submissions/Mitigation/MappingClimateDataSpace/DataExplorer_MappingClimateDataSpace/public/assets/WebApp-Sample2.png?raw=true)
+![Climate Data Explorer cover image](https://github.com/wo1vin/cop27_datathon/blob/dc6225fa18dd577a296167d7201ba8ca8d99ade6/Submissions/Mitigation/MappingClimateDataSpace/DataExplorer_MappingClimateDataSpace/public/assets/WebApp-Sample3.png?raw=true)
+
+___
+
+
 # Packages/Dependencies
 - Dotenv
 - Express
