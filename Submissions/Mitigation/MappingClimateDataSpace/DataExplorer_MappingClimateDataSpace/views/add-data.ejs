@@ -1,0 +1,219 @@
+<%- include('partials/header') -%>
+<main>
+    <section class="intro">
+        <h1>Submitting Resources</h1>
+        <p>
+            Help expand the collection by contributing useful datasets and tools. Please double check to make sure the data meets the criteria below so that we can continue to provide the most relevant information to our users. We want to include only tools that have actionable data. Fill out the form below as best you can and we will add it to the database for everyone to use.
+        </p>
+    </section>
+    <section class="criteria">
+        <h2>Criteria</h2>
+
+        <ol class="criteriaList">
+            <li class="criteriaCard">
+                <p>
+                    Data must be relevant to climate change.
+                </p>
+            </li>
+            <li class="criteriaCard">
+                <p>
+                    The information should be <em>scientifically sound</em>, meaning the datasets are from reputable organizations, the sources are transparent, or the sources are from an institution with enough sway on climate decisionmaking that it merits inclusion.
+                </p>
+            </li>
+            <li class="criteriaCard">
+                <p>
+                    Do not submit data or tools that are only focused on one country (like only the US or only India). It must cover one of these:
+                    <ol>
+                        <li>Be global or multi-country</li>
+                        <li>All of the top four emitters (China, USA, EU, and India)</li>
+                        <li>Cover a significantly large area, such as more than one region</li>
+                    </ol>
+                </p>
+            </li>
+            <li class="criteriaCard">
+                <p>
+                    Has the data or portal been updated within the last three years? Acceptable if any one of the following criteria is fulfilled:
+                    <ol>
+                        <li>Project is still funded</li>
+                        <li>Data was updated within the last 3 years</li>
+                        <li>Even if not active project is very unique and is still one of the only data sources of its kind (very few will fall under this)</li>
+                    </ol>
+                </p>
+            </li>
+        </ol>
+        <table>
+            <tr>
+                <th class="a">Acceptable</th>
+                <th>Does not meet criteria</th>
+            </tr>
+            <tr>
+                <td class="a b"><i class="fa-solid fa-square-check"></i>Licensing requirements</td>
+                <td><i class="fa-solid fa-square-xmark"></i>Tools behind paywalls</td>
+            </tr>
+            <tr>
+                <td class="a b"><i class="fa-solid fa-square-check"></i>Anyone can create a login</td>
+                <td><i class="fa-solid fa-square-xmark"></i>Data with limited access</td>
+            </tr>
+            <tr>
+                <td class="a b"><i class="fa-solid fa-square-check"></i>Non English language</td>
+                <td></td>
+            </tr>
+        </table>
+    </section>
+    <section class="form">
+        <h2>Submission Sheet</h2>
+        <form action="/data/createData" name="postSource" enctype="application/x-www-form-urlencoded" method="POST">
+            <div class="row col2">
+                <div>
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title">
+                </div>
+                <div>
+                    <label for="url">Link</label>
+                    <input type="url" name="url" id="url">
+                </div>
+                <div class="wAuto">
+                    <label for="status">Still Active?</label>
+                    <input  type="checkbox" name="status" id="status">
+                </div>
+            </div>
+            <div class="row col1">
+                <div>
+                    <label for="description">Brief Description</label>
+                    <textarea id="description" name="description" placeholder="Type here..."></textarea>
+                </div>
+            </div>
+            <div class="row col4">
+                    <section>
+                        <label class="dropdownLbl">Topic</label>
+                        <div class="dropdownList">
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="Impacts">Impacts
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="Finance">Finance
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="Energy">Energy
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="Mitigation">Mitigation
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="Forest and Agriculture">Forest & Agriculture
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="adaptation">Adaptation
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="policy">Policy
+                            </label>
+                        </div>
+                    </section>
+                    <section>
+                        <label class="dropdownLbl">Visualization Type</label>
+                        <div class="dropdownList">
+                            <label class="dropOption">
+                                <input type="checkbox" name="visType" value="Interactive Charts">Interactive Charts
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="visType" value="Interactive Maps">Interactive Maps
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="visType" value="Raw Data">Raw Data
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="visType" value="Report">Report (Static)
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="visType" value="Resource Aggregator">Resource Aggregator
+                            </label>
+                        </div>
+                    </section>
+                    <section>
+                        <label class="dropdownLbl">Geographic Scale</label>
+                        <div class="dropdownList">
+                            <label class="dropOption">
+                                <input type="checkbox" name="scale" value="Regional">Regional
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="scale" value="Country">Country
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="scale" value="Non-State Actor">Non-State Actor
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="scale" value="State">State
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="scale" value="City">City
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="scale" value="Geospatial Data">Geospatial Data
+                            </label>
+                        </div>
+                    </section>
+                    <section>
+                        <label class="dropdownLbl">Target Audience</label>
+                        <div class="dropdownList">
+                            <label class="dropOption">
+                                <input type="checkbox" name="audience" value="Government Ministries">Government Ministries
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="audience" value="Cities">Cities
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="audience" value="Corporate">Corporate
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="audience" value="Investors">Investors
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="audience" value="Academic">Academic
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="audience" value="General Public">General Public
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="audience" value="Advocacy groups/NGOs">Advocacy groups/ NGOs
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="audience" value="Media">Media
+                            </label>
+                        </div>
+                    </section>
+            </div>
+            <div class="row">
+                <div class="selectdiv">
+                <%- include('partials/countries') -%>
+                </div>
+            </div>
+            <div class="row col2 botrows">
+                <div>
+                    <label for="orgs">Organization(s)</label>
+                    <input type="text" name="orgs" id="orgs">
+                </div>
+                <div>
+                    <label for="yearEst">Year Established</label>
+                    <input type="number" name="yearEst" id="yearEst">
+                </div>
+            </div>
+            <div class="row col2 botrows">
+                <div>
+                    <label for="submitterName">Your Name</label>
+                    <input type="text" name="submitterName" id="submitterName">
+                </div>
+                <div>
+                    <label for="submitterEmail">Your Email Address</label>
+                    <input type="email" name="submitterEmail" id="submitterEmail">
+                </div>
+            </div>
+            <div class="row col2 btnrow">
+                <button type="reset" class="btn">Clear</button>
+                <button type="submit" class="btn">Submit</button>
+            </div>
+        </form>
+    </section>
+</main>
+
+<%- include('partials/footer') -%>

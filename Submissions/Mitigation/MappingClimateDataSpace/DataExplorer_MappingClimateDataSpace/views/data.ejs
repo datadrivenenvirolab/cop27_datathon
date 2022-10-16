@@ -1,0 +1,114 @@
+<%- include('partials/header') -%>
+<main>
+    <section class="intro">
+        <h1>Data Sources</h1>
+        <p>
+            Search through the database for environmental, social, and economic data from official governmentsources and non governmental sources that measure the human causes of climate change, the impacts of climate change on human and natural systems, and the efforts of humans to mitigate its negative consequences and build resiliency.
+        </p>
+    </section>
+    <section class="dataTable">
+
+        <section class="tableNav">
+            <h2>Search the collection</h2>
+            <div class="cont">
+                <div class="dropdown">
+                    <button class="btn dropbtn">
+                        <i class="fa-solid fa-filter"></i> Filter
+                    </button>
+
+                    <form id="filterMenu" class="filterMenu i-inside">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="search" id="search" name="search" placeholder="Search by keyword">
+                        <button class="expandBtn"><i class="fa-solid fa-chevron-right"></i> Topic</button>
+                        <section class="menuOptions">
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="Impacts">Impacts
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="Finance">Finance
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="Energy">Energy
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="Mitigation">Mitigation
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="Forest and Agriculture">Forest & Agriculture
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="adaptation">Adaptation
+                            </label>
+                            <label class="dropOption">
+                                <input type="checkbox" name="topic" value="policy">Policy
+                            </label>
+
+                        </section>
+                    </form>
+                </div>
+                <!-- <button class="btn">
+                    <i class="fa-solid fa-arrow-down"></i> Sort
+                </button> -->
+                <!-- <a class="btn abtn" href="/add-data"><i class="fa-solid fa-plus"></i> Add</a> -->
+            </div>
+        </section>
+
+        <ul class="table">
+            <li class="dataCard">
+                <!--title | topics | vis types | link-->
+                <section class="dataRow spBt">
+                    <h5>Title goes here</h5>
+                    <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                </section>
+                <section class="dataRow pills">
+                        <span class="dataTopic">Topic 1</span>
+                        <span class="dataTopic">Topic 2</span>
+                        <span class="visType">Vis Type 1</span>
+                        <span class="visType">Vis Type 2</span>
+                    </div>
+                </section>
+                <!-- the following details will show when users click to expand-->
+                    <!--scale | geographies | orgs | yr est | GST? | active? -->
+                <section class="dataRow expand">
+                    <div class="dropdown">
+                        <span><i class="fa-solid fa-angle-right"></i>Scale</span>
+                        <div class="dropMenu">
+                            <!-- insert below -->
+                            <span class="scaleVal"></span>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <span><i class="fa-solid fa-angle-right"></i>Audience</span>
+                        <div class="dropMenu">
+                            <!-- insert below -->
+                            <span class="scaleVal"></span>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <span><i class="fa-solid fa-angle-right"></i>Geographies</span>
+                        <div class="dropMenu">
+                            <!-- insert geo areas below -->
+                            <span class="geoVal"></span>
+                        </div>
+                    </div>
+                </section>
+                <section class="dataRow expand">
+                        <span>Organization</span>
+                        <span>Yr Est</span>
+                        <span>GST?</span>
+                        <i class="fa-solid fa-circle"></i>
+                        <!--active?-->
+                </section>
+                <section class="dataRow expand">
+                            <!--description -->
+                        <p>Description</p>
+                </section>
+            </li>
+        </ul>
+        <!-- <section class="pagination">
+            <span>Pagination goes here</span>
+        </section> -->
+    </section>
+</main>
+
+<%- include('partials/footer') -%>
