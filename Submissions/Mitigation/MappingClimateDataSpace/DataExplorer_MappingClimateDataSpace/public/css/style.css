@@ -60,6 +60,7 @@ table {
 	border-spacing: 0;
 }
 html{
+  height: 100vh;
   background: rgb(3,22,77);
 background: -moz-linear-gradient(165deg, rgba(3,22,77,1) 6%, rgba(8,199,214,1) 43%, rgba(8,191,208,1) 57%, rgba(3,22,77,1) 100%);
 background: -webkit-linear-gradient(165deg, rgba(3,22,77,1) 6%, rgba(8,199,214,1) 43%, rgba(8,191,208,1) 57%, rgba(3,22,77,1) 100%);
@@ -154,6 +155,7 @@ header{
           text-align: center;
         }
 /*  MAIN STYLING - INDEX  */
+
 main{
   display: flex;
   flex-direction: column;
@@ -161,8 +163,14 @@ main{
   background: white;
   font-family: 'Roboto',sans-serif;
 }
+main.index{
+  padding: 4.25em 0;
+}
   main section{
     width: 80%;
+  }
+  section.tableSe table th, section.tableSe table td{
+    width: 10vw;
   }
     h1, h2, h3{
       font-family: 'Concert One', 'Roboto', sans-serif;
@@ -237,10 +245,12 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#03164d",endCo
       padding: .4em;
     }
 /*  MAIN STYLING - ADD-DATA  */
+section.intro{
+  padding: 2em 0 4em 0;
+}
 section.criteria{
   width: 100%;
   padding: 4em 0;
-  margin: 2em 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -425,7 +435,7 @@ section.form form{
   input#search, div input,select {
     padding: 6px 4px 6px 40px;
     border-radius: 2em;
-    border: 2px solid white;
+    border: 2px solid rgb(36, 36, 36);
   }
 .btn i{
   color: white;
@@ -476,7 +486,7 @@ span.visType {
 }
 /*  FOOTER  */
 footer {
-  padding: 2em 0;
+  padding: 4em 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
