@@ -1,0 +1,309 @@
+---
+title: "COP27"
+output:
+  html_document:
+    toc: true
+    toc_float: true
+---
+<style>
+.main-container {
+    max-width: 940px;
+    margin-left: 0;
+    margin-right: auto;
+}
+</style>
+
+```{r, include=F}
+knitr::opts_chunk$set(fig.width=7, fig.height=9, 
+                      echo=F, warning=F, message=F)
+```
+
+```{r}
+library(readr)
+library(readxl)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+library(tidyr)
+library(flextable)
+library(zoo)
+library(scales)
+library(plotly)
+
+# theme_set(theme_classic() +
+#             theme(strip.background=element_rect(linetype=0),
+#                   axis.text.x = element_text(angle = 45, hjust=1),
+#                   axis.title = element_blank(),
+#                   axis.text = element_text(size=12),
+#                   axis.line=element_line(colour='grey80'),
+#                   axis.ticks = element_line(color="grey80"),
+#                   panel.grid.major.y = element_line(color = "grey80"),
+#                   plot.title = element_text(size = 17, face = "bold")))
+```
+```{r}
+df = read_csv('../data/netzero.csv')
+```
+
+# Introduction
+  
+How can analysis and visualization of publicly available data be used to further map the ambition of current net-zero CO2eq or GHG non-state actor targets/commitments?  
+   
+Non-state actors (NSAs) is a term that refers to any group of actors that are not parties to the Paris
+Climate Agreement. Cities, subnational governments, and companies–all NSAs–have significant
+contributions to climate change mitigation efforts.
+
+Emission reduction targets are a key component of the mitigation ambition of NSAs. This notebook visualizes the progress of NSAs based on the netzero tracker which can be downloaded from https://zerotracker.net.
+
+```{r}
+# DATA CLEANING
+# Baseline year is incorrect for Releigh, USA
+df$end_target_baseline_year[df$end_target_baseline_year==1007 & !is.na(df$end_target_baseline_year)] <- 2007
+
+#End target status
+df <- df %>%
+  left_join(data.frame(end_target_status=c("Achieved (externally validated)",
+                                                          "Achieved (self-declared)",
+                                                          "Declaration / pledge",
+                                                          "In corporate strategy",
+                                                          "In law",
+                                                          "In policy document",
+                                                          "Proposed / in discussion"),
+                                      end_target_status_stage=c(6,5,2,4,4,3,1)))
+
+#Georgia 
+if (df$end_target_baseline_year[df$id_code=='COU-0141']>df$end_target_year[df$id_code=='COU-0141']){
+  q <- df$end_target_baseline_year[df$id_code=='COU-0141']
+  df$end_target_baseline_year[df$id_code=='COU-0141'] <- df$end_target_year[df$id_code=='COU-0141']
+  df$end_target_year[df$id_code=='COU-0141'] <- q
+}
+  
+#Poland assume status date is 2021 (assuming data updated till last year)
+df$status_date[df$id_code =='COU-0170'] <- 2021
+
+#Angola status year > 2021
+df$status_date[df$id_code=='COU-0002'] <- 2021
+```
+
+# Emissions reduction targets
+
+## Cities
+
+### Baseline Year vs Target Year
+Red - baseline year
+Green - status date
+Black triangle - target year
+
+```{r}
+df %>%
+  filter(end_target=='Emissions reduction target') %>%
+  filter(actor_type=='City') %>%
+  # filter(name %in% sample(unique(name),10)) %>%
+  mutate(end_target_n_years=end_target_year) %>%
+  ggplot(aes(y=name)) +
+  geom_point(aes(x=end_target_year), color=1, shape = 2) +
+  geom_point(aes(x=end_target_baseline_year), color=2) +
+  geom_point(aes(x=status_date), color=3) +
+  geom_vline(aes(xintercept=2022), linetype='dashed', color='grey3') -> p
+ggplotly(p)
+```
+
+```{r}
+set.seed(0)
+df %>%
+  filter(end_target_baseline_year>1800) %>%
+  filter(end_target=='Emissions reduction target') %>%
+  filter(actor_type=='City') %>%
+  # filter(name %in% sample(unique(name),10)) %>%
+  mutate(end_target_n_years=end_target_year-end_target_baseline_year) %>%
+  ggplot(aes(y=name)) +
+  geom_point(aes(x=end_target_year-end_target_baseline_year), color=1, shape = 2) +
+  geom_point(aes(x=end_target_baseline_year-end_target_baseline_year), color=2) +
+  geom_point(aes(x=status_date-end_target_baseline_year), color=3) -> p
+ggplotly(p)
+```
+### % Time elapsed to status date
+
+```{r}
+set.seed(0)
+percentage_time_elapsed_based_on_status_date <- df %>%
+  filter(end_target_baseline_year>1800) %>%
+  filter(end_target=='Emissions reduction target') %>%
+  filter(actor_type=='City') %>%
+  # filter(name %in% sample(unique(name),10)) %>%
+  mutate(end_target_n_years=end_target_year-end_target_baseline_year) %>%
+  mutate(`% time elapsed to target`=(status_date-end_target_baseline_year)/
+           (end_target_year-end_target_baseline_year))
+  # mutate(name=reorder(name,`% time elapsed to target`)) %>%
+percentage_time_elapsed_based_on_status_date %>%
+  ggplot(aes(x=name)) +
+  geom_col(aes(y=`% time elapsed to target`),
+             fill=3) +
+  geom_text(aes(y=`% time elapsed to target` + 0.08,
+            label=paste(round(`% time elapsed to target`*100,1),'%')), size=2.5) +
+  coord_flip()-> p
+ggplotly(p)
+```
+
+### Status delay (status_date to current year of 2022)
+
+```{r, fig.height=8}
+df %>%
+  filter(end_target=='Emissions reduction target') %>%
+  filter(actor_type=='City') %>%
+  # filter(name %in% sample(unique(name),10)) %>%
+  mutate(status_delay = 2022 - status_date) %>%
+  ggplot(aes(x=name)) +
+  geom_col(aes(y=status_delay), fill=3) +
+  geom_text(aes(y=status_delay + 1,
+            label=paste(status_delay,'years')), size=2.5) +
+  coord_flip() -> p
+ggplotly(p)
+```
+
+## Regions
+
+### Baseline Year vs Target Year
+Red - baseline year
+Green - status date
+Black triangle - target year
+
+```{r}
+df %>%
+  filter(end_target=='Emissions reduction target') %>%
+  filter(actor_type=='Region') %>%
+  # filter(name %in% sample(unique(name),10)) %>%
+  mutate(end_target_n_years=end_target_year) %>%
+  ggplot(aes(y=name)) +
+  geom_point(aes(x=end_target_year), color=1, shape = 2) +
+  geom_point(aes(x=end_target_baseline_year), color=2) +
+  geom_point(aes(x=status_date), color=3) +
+  geom_vline(aes(xintercept=2022), linetype='dashed', color='grey3') -> p
+ggplotly(p)
+```
+
+```{r}
+set.seed(0)
+df %>%
+  filter(end_target_baseline_year>1800) %>%
+  filter(end_target=='Emissions reduction target') %>%
+  filter(actor_type=='Region') %>%
+  # filter(name %in% sample(unique(name),10)) %>%
+  mutate(end_target_n_years=end_target_year-end_target_baseline_year) %>%
+  ggplot(aes(y=name)) +
+  geom_point(aes(x=end_target_year-end_target_baseline_year), color=1, shape = 2) +
+  geom_point(aes(x=end_target_baseline_year-end_target_baseline_year), color=2) +
+  geom_point(aes(x=status_date-end_target_baseline_year), color=3) -> p
+ggplotly(p)
+```
+
+### % Time elapsed to status date
+
+```{r}
+set.seed(0)
+percentage_time_elapsed_based_on_status_date <- df %>%
+  filter(end_target_baseline_year>1800) %>%
+  filter(end_target=='Emissions reduction target') %>%
+  filter(actor_type=='Region') %>%
+  # filter(name %in% sample(unique(name),10)) %>%
+  mutate(end_target_n_years=end_target_year-end_target_baseline_year) %>%
+  mutate(`% time elapsed to target`=(status_date-end_target_baseline_year)/
+           (end_target_year-end_target_baseline_year))
+  # mutate(name=reorder(name,`% time elapsed to target`)) %>%
+percentage_time_elapsed_based_on_status_date %>%
+  ggplot(aes(x=name)) +
+  geom_col(aes(y=`% time elapsed to target`),
+             fill=3) +
+  geom_text(aes(y=`% time elapsed to target` + 0.08,
+            label=paste(round(`% time elapsed to target`*100,1),'%')), size=2.5) +
+  coord_flip()-> p
+ggplotly(p)
+```
+
+### Status delay (status_date to current year of 2022)
+
+```{r, fig.height=8}
+df %>%
+  filter(end_target=='Emissions reduction target') %>%
+  filter(actor_type=='Region') %>%
+  # filter(name %in% sample(unique(name),10)) %>%
+  mutate(status_delay = 2022 - status_date) %>%
+  ggplot(aes(x=name)) +
+  geom_col(aes(y=status_delay), fill=3) +
+  geom_text(aes(y=status_delay + 1,
+            label=paste(status_delay,'years')), size=2.5) +
+  coord_flip() -> p
+ggplotly(p)
+```
+
+## Companies
+
+### Baseline Year vs Target Year
+Red - baseline year  
+Green - status date  
+Black triangle - target year  
+
+```{r}
+df %>%
+  filter(end_target=='Emissions reduction target') %>%
+  filter(actor_type=='Company') %>%
+  # filter(name %in% sample(unique(name),10)) %>%
+  mutate(end_target_n_years=end_target_year) %>%
+  ggplot(aes(y=name)) +
+  geom_point(aes(x=end_target_year), color=1, shape = 2) +
+  geom_point(aes(x=end_target_baseline_year), color=2) +
+  geom_point(aes(x=status_date), color=3) +
+  geom_vline(aes(xintercept=2022), linetype='dashed', color='grey3') -> p
+ggplotly(p)
+```
+
+```{r}
+set.seed(0)
+df %>%
+  filter(end_target_baseline_year>1800) %>%
+  filter(end_target=='Emissions reduction target') %>%
+  filter(actor_type=='Company') %>%
+  # filter(name %in% sample(unique(name),10)) %>%
+  mutate(end_target_n_years=end_target_year-end_target_baseline_year) %>%
+  ggplot(aes(y=name)) +
+  geom_point(aes(x=end_target_year-end_target_baseline_year), color=1, shape = 2) +
+  geom_point(aes(x=end_target_baseline_year-end_target_baseline_year), color=2) +
+  geom_point(aes(x=status_date-end_target_baseline_year), color=3) -> p
+ggplotly(p)
+```
+### % Time elapsed to status date
+
+```{r}
+set.seed(0)
+percentage_time_elapsed_based_on_status_date <- df %>%
+  filter(end_target_baseline_year>1800) %>%
+  filter(end_target=='Emissions reduction target') %>%
+  filter(actor_type=='Company') %>%
+  # filter(name %in% sample(unique(name),10)) %>%
+  mutate(end_target_n_years=end_target_year-end_target_baseline_year) %>%
+  mutate(`% time elapsed to target`=(status_date-end_target_baseline_year)/
+           (end_target_year-end_target_baseline_year))
+  # mutate(name=reorder(name,`% time elapsed to target`)) %>%
+percentage_time_elapsed_based_on_status_date %>%
+  ggplot(aes(x=name)) +
+  geom_col(aes(y=`% time elapsed to target`),
+             fill=3) +
+  geom_text(aes(y=`% time elapsed to target` + 0.08,
+            label=paste(round(`% time elapsed to target`*100,1),'%')), size=2.5) +
+  coord_flip()-> p
+ggplotly(p)
+```
+### Status delay (status_date to current year of 2022)
+
+```{r, fig.height=8}
+df %>%
+  filter(end_target=='Emissions reduction target') %>%
+  filter(actor_type=='Company') %>%
+  # filter(name %in% sample(unique(name),10)) %>%
+  mutate(status_delay = 2022 - status_date) %>%
+  ggplot(aes(x=name)) +
+  geom_col(aes(y=status_delay), fill=3) +
+  geom_text(aes(y=status_delay + 1,
+            label=paste(status_delay,'years')), size=2.5) +
+  coord_flip() -> p
+ggplotly(p)
+```
